@@ -4,22 +4,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to PetFax</title>
+    <title>{% block title %}PetFax{% endblock %}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 
 <body>
-    <h1>Welcome to PetFax</h1>
-    <div class="pet-container">
-        {% for pet in pets %}
-        <div class="pet-item">
-            <a href="{{ url_for('pet.show', pet_id=loop.index) }}">
-                <h2>{{ pet['pet_name'] }}</h2>
-                <img src="{{ pet['pet_photo'] }}" alt="Photo of {{ pet['pet_name'] }}">
-            </a>
-        </div>
-        {% endfor %}
-    </div>
+    <nav>
+        <ul class="navbar">
+            <h1>Welcome to PetFax</h1>
+            <li><a href="{{ url_for('pet.index') }}">Home</a></li>
+            <li><a href="{{ url_for('fact.new') }}">Add Pet Fact</a></li>
+            
+        </ul>
+    </nav>
+    {% block content %}
+    <!-- Content will be overridden in child templates -->
+    {% endblock %}
 </body>
 
 </html>

@@ -8,7 +8,7 @@ bp = Blueprint('pet', __name__, url_prefix='/pets')
 
 @bp.route('/' )
 def index():
-    return render_template('index.html', pets=pets)
+    return render_template('listing.html', pets=pets)
 
 # Route for showing details of a specific pet
 @bp.route('/<int:pet_id>')

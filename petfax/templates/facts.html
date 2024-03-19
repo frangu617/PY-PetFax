@@ -1,29 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "index.html" %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add a Pet Fact</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-</head>
+{% block title %}Add a Pet Fact{% endblock %}
 
-<body>
-    <div class="form-container">
-        <h2>Add a Pet Fact</h2>
-        <p>If you have a cool pet fact, please add it here!</p>
-        <form action="/facts" method="POST" class="pet-form">
-            <div class="form-group">
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name">
-            </div>
-            <div class="form-group">
-                <label for="fact">Add a fact:</label>
-                <input type="text" id="fact" name="fact">
-            </div>
-            <button type="submit" class="button">Submit</button>
-        </form>
-    </div>
-</body>
-
-</html>
+{% block content %}
+<div class="form-container">
+    <h2>Add a Pet Fact</h2>
+    <p>If you have a cool pet fact, please add it here!</p>
+    <form action="/facts" method="POST" class="pet-form">
+        <div class="form-group">
+            <label for="name" style ="display: block;">Name:</label>
+            <input type="text" id="name" name="name" placeholder="Enter pet name">
+        </div>
+        <div class="form-group">
+            <label for="fact" style ="display: block;">Add a fact:</label>
+            <input type="text" id="fact" name="fact" placeholder="Enter pet fact">
+        </div>
+        <button type="submit" class="button">Submit</button>
+    </form>
+</div>
+{% endblock %}
