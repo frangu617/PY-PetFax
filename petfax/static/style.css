@@ -145,3 +145,7 @@ img:hover {
     display: inline-block;
     
 }
+
+.form-group label {
+    display: block;
+}

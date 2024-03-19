@@ -1,6 +1,13 @@
 from flask import Flask as flask
+from flask_pymongo import PyMongo
+
+mongo = PyMongo()
 def create_app():
     app = flask(__name__)
+    
+    app.config["MONGO_URI"] = "mongodb://localhost:27017/PY-PetFax"
+    
+    mongo.init_app(app)
     
     @app.route('/')
     def hello():
