@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Pet Facts{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Pet Facts</h1>
+    <ul class="facts-list">
+        {% for fact in facts %}
+        <li>{{ fact.fact_text }}</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Add a New Pet Fact</h2>
+    <form action="{{ url_for('fact.new') }}" method="POST" class="pet-form">
+        <div class="form-group">
+            <label for="fact">Fact:</label>
+            <input type="text" id="fact" name="fact" placeholder="Enter a cool fact about pets" required>
+        </div>
+        <button type="submit" class="button">Submit</button>
+    </form>
+</div>
+{% endblock %}
