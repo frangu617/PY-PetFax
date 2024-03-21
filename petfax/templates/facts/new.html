@@ -1,4 +1,4 @@
-{% extends "index.html" %}
+{% extends "./index.html" %}
 
 {% block title %}Add a Pet Fact{% endblock %}
 
@@ -6,7 +6,7 @@
 <div class="form-container">
     <h2>Add a Pet Fact</h2>
     <p>If you have a cool pet fact, please add it here!</p>
-    <form action="/facts" method="POST" class="pet-form">
+    <form action="/facts/new" method="POST" class="pet-form">
         <div class="form-group">
             <label for="name" style ="display: block;">Name:</label>
             <input type="text" id="name" name="name" placeholder="Enter pet name">

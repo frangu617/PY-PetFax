@@ -1,0 +1,45 @@
+{% extends "/index.html" %}
+
+{% block title %}Add a Pet Fact{% endblock %}
+
+{% block content %}
+{% for fact in facts %}
+<div class="form-container" data-fact-id="{{ fact.id }}" style="border: 1px solid #111; margin-top: 10px;">
+    <h4> Submitted by {{ fact.name }}</h4>
+    <p>{{ fact.fact }}</p>
+    <button class="delete-btn">Delete</button>
+</div>
+{% endfor %}
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Select all delete buttons
+        const deleteButtons = document.querySelectorAll('.delete-btn');
+
+        // Attach click event listener to each delete button
+        deleteButtons.forEach(button => {
+            button.addEventListener('click', function () {
+                // Extract the fact ID from the data attribute
+                const factId = button.parentElement.getAttribute('data-fact-id');
+
+                // Send a DELETE request to the server
+                fetch(`/facts/${factId}`, {
+                    method: 'DELETE',
+                })
+                    .then(response => {
+                        if (response.ok) {
+                            // Remove the deleted fact item from the DOM
+                            button.parentElement.remove();
+                        } else {
+                            // Handle errors
+                            console.error('Failed to delete fact');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                    });
+            });
+        });
+    });
+</script>
+{% endblock %}
