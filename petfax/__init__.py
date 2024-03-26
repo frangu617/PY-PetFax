@@ -19,11 +19,6 @@ def create_app():
     def hello():
         return 'Hello this is PetFax!'
     
-    #pets index route
-    # @app.route('/pets')
-    # def pets():
-    #     return 'These are out pets available for adoption'
-    
     #register pet blueprint
     from . import facts
     app.register_blueprint(facts.bp)
